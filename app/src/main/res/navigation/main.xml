@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    app:startDestination="@id/users_list">
+
+    <fragment
+        android:id="@+id/users_list"
+        android:name="com.aregyan.github.views.userList.UserListFragment"
+        tools:layout="@layout/fragment_user_list">
+        <action
+            android:id="@+id/action_users_list_to_user_details"
+            app:destination="@id/user_details">
+            <argument
+                android:name="user"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/user_details"
+        android:name="com.aregyan.github.views.userDetails.UserDetailsFragment"
+        tools:layout="@layout/fragment_user_details">
+        <argument
+            android:name="user"
+            app:argType="string" />
+    </fragment>
+
+</navigation>
+
