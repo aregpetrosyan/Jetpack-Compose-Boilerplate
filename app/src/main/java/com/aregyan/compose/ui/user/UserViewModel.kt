@@ -13,7 +13,7 @@ class UserViewModel @Inject constructor(
     private val userListRepository: UserListRepository
 ) : ViewModel() {
 
-    val data = userListRepository.users
+//    val data = userListRepository.users
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
