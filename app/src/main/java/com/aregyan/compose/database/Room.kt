@@ -2,13 +2,14 @@ package com.aregyan.compose.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UsersDao {
 
     // user List
     @Query("select * from DatabaseUserListItem")
-    fun getDatabaseUsers(): LiveData<List<DatabaseUserListItem>>
+    fun getDatabaseUsers(): Flow<List<DatabaseUserListItem>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(users: List<DatabaseUserListItem>)
