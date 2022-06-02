@@ -43,7 +43,11 @@ fun UserItem(item: UserListItem) {
             model = item.avatar,
             contentDescription = null
         )
-        Text(text = item.username, modifier = Modifier.padding(horizontal = 16.dp))
+        Text(
+            modifier = Modifier.padding(horizontal = 16.dp),
+            text = item.username,
+            color = MaterialTheme.colors.onBackground
+        )
     }
 }
 
