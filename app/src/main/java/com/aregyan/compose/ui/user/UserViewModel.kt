@@ -11,6 +11,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 data class UserUiState(
@@ -29,9 +30,11 @@ class UserViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             userListRepository.refreshUserList()
             userListRepository.users.collect { list ->
-                uiState = UserUiState(
-                    list = list
-                )
+                withContext(Dispatchers.Main) {
+                    uiState = UserUiState(
+                        list = list
+                    )
+                }
             }
         }
     }
