@@ -14,19 +14,19 @@ fun ComposeApp() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Screen.User.route
+        startDestination = Route.USER
     ) {
-        composable(Screen.User.route) {
+        composable(Route.USER) {
             UserScreen(
                 onUserClick = { username ->
-                    navController.navigate("${Screen.Detail.route}/$username")
+                    navController.navigate("${Route.DETAIL}/$username")
                 }
             )
         }
         composable(
-            route = "${Screen.Detail.route}/{${Argument.Username.value}}",
+            route = "${Route.DETAIL}/{${Argument.USERNAME}}",
             arguments = listOf(
-                navArgument(Argument.Username.value) {
+                navArgument(Argument.USERNAME) {
                     type = NavType.StringType
                 }
             ),
@@ -36,11 +36,11 @@ fun ComposeApp() {
     }
 }
 
-enum class Screen(val route: String) {
-    User("user"),
-    Detail("detail")
+object Route {
+    const val USER = "user"
+    const val DETAIL = "detail"
 }
 
-enum class Argument(val value: String) {
-    Username("username")
+object Argument {
+    const val USERNAME = "username"
 }
