@@ -11,9 +11,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 
 @Composable
-fun DetailScreen(
-
-) {
+fun DetailScreen() {
     val viewModel = hiltViewModel<DetailViewModel>()
     val uiState = viewModel.uiState
 
