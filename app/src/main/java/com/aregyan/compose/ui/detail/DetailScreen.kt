@@ -9,6 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Composable
 fun DetailScreen() {
@@ -34,7 +36,7 @@ fun DetailScreen() {
             )
             Text(
                 modifier = Modifier.padding(start = 16.dp, top = 16.dp),
-                text = uiState.detail.userSince.orEmpty(),
+                text = formatDate(uiState.detail.userSince),
                 color = MaterialTheme.colors.onBackground
             )
             Text(
@@ -44,4 +46,12 @@ fun DetailScreen() {
             )
         }
     }
+}
+
+private fun formatDate(dateUTC: String?) : String {
+    if (dateUTC.isNullOrEmpty()) return ""
+
+    val date = SimpleDateFormat("yyyy-mm-dd'T'HH:mm:ss'Z'", Locale.getDefault()).parse(dateUTC)
+    val newFormat = SimpleDateFormat("dd/MM/yyy", Locale.getDefault())
+    return date?.let { newFormat.format(it) }.orEmpty()
 }
