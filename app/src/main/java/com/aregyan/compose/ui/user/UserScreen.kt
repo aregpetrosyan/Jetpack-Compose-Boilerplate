@@ -38,18 +38,18 @@ fun UserItem(item: UserListItem, onUserClick: (String) -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onUserClick(item.username) },
+            .clickable { onUserClick(item.username) }
+            .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         AsyncImage(
             modifier = Modifier
-                .padding(16.dp)
                 .size(40.dp),
             model = item.avatar,
             contentDescription = null
         )
         Text(
-            modifier = Modifier.padding(horizontal = 16.dp),
+            modifier = Modifier.padding(start = 16.dp),
             text = item.username,
             color = MaterialTheme.colors.onBackground
         )
