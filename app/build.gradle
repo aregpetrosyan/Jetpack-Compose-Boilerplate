@@ -97,4 +97,7 @@ dependencies {
     //==================== Navigation ====================
     def nav_version = "2.4.2"
     implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    //==================== Memory Leak Detection ====================
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
 }
