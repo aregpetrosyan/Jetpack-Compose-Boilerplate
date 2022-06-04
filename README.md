@@ -23,11 +23,13 @@ This repository contains a sample project in Kotlin to demonstrate Jetpack Compo
 
 - Coroutines: https://developer.android.com/kotlin/coroutines
 
-- Leak Canary: https://square.github.io/leakcanary/
-
 - Coil: https://coil-kt.github.io/coil/
 
 - Retrofit: https://square.github.io/retrofit/
+
+- Moshi: https://github.com/square/moshi
+
+- Leak Canary: https://square.github.io/leakcanary/
 
 ## Concept reference resources:
 
@@ -35,6 +37,12 @@ This repository contains a sample project in Kotlin to demonstrate Jetpack Compo
 
 - Room and Coroutines Codelab: https://developer.android.com/codelabs/kotlin-android-training-room-database
 
+- Room and Flow Codelab - https://developer.android.com/codelabs/basic-android-kotlin-training-intro-room-flow
+
 - Hilt Codelab: https://developer.android.com/codelabs/android-hilt
 
+- Navigation Codelab : https://developer.android.com/codelabs/jetpack-compose-navigation
 
+- Theming Codelab - https://developer.android.com/codelabs/jetpack-compose-theming
+
+- Basic Layouts Codelab- https://developer.android.com/codelabs/jetpack-compose-layouts
