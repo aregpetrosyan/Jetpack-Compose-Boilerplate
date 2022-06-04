@@ -13,6 +13,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 data class DetailUiState(
@@ -36,7 +38,9 @@ class DetailViewModel @Inject constructor(
                 userDetailsRepository.getUserDetails(it).collect { detail ->
                     withContext(Dispatchers.Main) {
                         uiState = DetailUiState(
-                            detail = detail
+                            detail = detail.copy(
+                                userSince = formatDate(detail.userSince)
+                            )
                         )
                     }
                 }
@@ -44,4 +48,12 @@ class DetailViewModel @Inject constructor(
         }
     }
 
+}
+
+private fun formatDate(dateUTC: String?) : String {
+    if (dateUTC.isNullOrEmpty()) return ""
+
+    val date = SimpleDateFormat("yyyy-mm-dd'T'HH:mm:ss'Z'", Locale.getDefault()).parse(dateUTC)
+    val newFormat = SimpleDateFormat("dd/MM/yyy", Locale.getDefault())
+    return date?.let { newFormat.format(it) }.orEmpty()
 }
