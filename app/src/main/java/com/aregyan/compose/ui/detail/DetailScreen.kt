@@ -8,4 +8,5 @@ fun DetailScreen(
 
 ) {
     val viewModel = hiltViewModel<DetailViewModel>()
+    val uiState = viewModel.uiState
 }

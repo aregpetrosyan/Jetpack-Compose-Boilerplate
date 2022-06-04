@@ -1,6 +1,5 @@
 package com.aregyan.compose.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
@@ -16,7 +15,7 @@ interface UsersDao {
 
     // single user
     @Query("select * from DatabaseUserDetails WHERE user LIKE :user")
-    fun getUserDetails(user: String): LiveData<DatabaseUserDetails>
+    fun getUserDetails(user: String): Flow<DatabaseUserDetails>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUserDetails(databaseUserDetails: DatabaseUserDetails)
