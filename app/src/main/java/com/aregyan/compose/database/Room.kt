@@ -4,24 +4,24 @@ import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface UsersDao {
+interface LocalDataDao {
 
     // user List
     @Query("select * from UserEntity")
-    fun getDatabaseUsers(): Flow<List<UserEntity>>
+    fun getUsers(): Flow<List<UserEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(users: List<UserEntity>)
+    fun insertUsers(users: List<UserEntity>)
 
     // single user
     @Query("select * from DetailsEntity WHERE user LIKE :user")
-    fun getUserDetails(user: String): Flow<DetailsEntity>
+    fun getDetails(user: String): Flow<DetailsEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUserDetails(detailsEntity: DetailsEntity)
+    fun insertDetails(detailsEntity: DetailsEntity)
 }
 
 @Database(entities = [UserEntity::class, DetailsEntity::class], version = 1)
 abstract class LocalDataSource : RoomDatabase() {
-    abstract val usersDao: UsersDao
+    abstract val localDataDao: LocalDataDao
 }

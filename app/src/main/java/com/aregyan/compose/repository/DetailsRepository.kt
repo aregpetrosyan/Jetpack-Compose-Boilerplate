@@ -16,12 +16,12 @@ class DetailsRepository @Inject constructor(
 ) {
 
     fun getUserDetails(user: String): Flow<Details> =
-        localDataSource.usersDao.getUserDetails(user).map { it.asDomainModel() }
+        localDataSource.localDataDao.getDetails(user).map { it.asDomainModel() }
 
     suspend fun refreshUserDetails(user: String) {
         try {
             val userDetails = detailsRemoteDataSource.getDetails(user)
-            localDataSource.usersDao.insertUserDetails(userDetails.asDatabaseModel())
+            localDataSource.localDataDao.insertDetails(userDetails.asDatabaseModel())
         } catch (e: Exception) {
             Timber.w(e)
         }

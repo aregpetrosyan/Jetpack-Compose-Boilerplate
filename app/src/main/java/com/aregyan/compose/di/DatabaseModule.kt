@@ -2,7 +2,7 @@ package com.aregyan.compose.di
 
 import android.content.Context
 import androidx.room.Room
-import com.aregyan.compose.database.UsersDao
+import com.aregyan.compose.database.LocalDataDao
 import com.aregyan.compose.database.LocalDataSource
 import dagger.Module
 import dagger.Provides
@@ -25,8 +25,8 @@ object DatabaseModule {
     }
 
     @Provides
-    fun provideChannelDao(localDataSource: LocalDataSource): UsersDao {
-        return localDataSource.usersDao
+    fun provideChannelDao(localDataSource: LocalDataSource): LocalDataDao {
+        return localDataSource.localDataDao
     }
 
 }

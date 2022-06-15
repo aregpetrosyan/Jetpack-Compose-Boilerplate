@@ -16,12 +16,12 @@ class UsersRepository @Inject constructor(
 ) {
 
     val users: Flow<List<User>> =
-        localDataSource.usersDao.getDatabaseUsers().map { it.asDomainModel() }
+        localDataSource.localDataDao.getUsers().map { it.asDomainModel() }
 
     suspend fun refreshUserList() {
         try {
             val users = usersRemoteDataSource.getUsers()
-            localDataSource.usersDao.insertAll(users.asDatabaseModel())
+            localDataSource.localDataDao.insertUsers(users.asDatabaseModel())
         } catch (e: Exception) {
             Timber.w(e)
         }
