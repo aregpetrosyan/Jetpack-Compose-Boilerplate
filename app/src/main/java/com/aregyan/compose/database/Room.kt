@@ -22,6 +22,6 @@ interface UsersDao {
 }
 
 @Database(entities = [DatabaseUserListItem::class, DatabaseUserDetails::class], version = 1)
-abstract class UsersDatabase : RoomDatabase() {
+abstract class LocalDataSource : RoomDatabase() {
     abstract val usersDao: UsersDao
 }
