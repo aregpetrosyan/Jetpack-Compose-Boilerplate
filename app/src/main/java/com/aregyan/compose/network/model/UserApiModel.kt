@@ -1,12 +1,12 @@
 package com.aregyan.compose.network.model
 
 
-import com.aregyan.compose.database.DatabaseUserListItem
+import com.aregyan.compose.database.UserEntity
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class NetworkUserListItem(
+data class UserApiModel(
     @Json(name = "avatar_url")
     val avatarUrl: String,
     @Json(name = "events_url")
@@ -45,9 +45,9 @@ data class NetworkUserListItem(
     val url: String
 )
 
-fun List<NetworkUserListItem>.asDatabaseModel(): List<DatabaseUserListItem> {
+fun List<UserApiModel>.asDatabaseModel(): List<UserEntity> {
     return map {
-        DatabaseUserListItem(
+        UserEntity(
             id = it.id,
             avatar = it.avatarUrl,
             username = it.login

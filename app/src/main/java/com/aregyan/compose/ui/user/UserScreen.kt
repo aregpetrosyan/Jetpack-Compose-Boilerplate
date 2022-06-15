@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
-import com.aregyan.compose.domain.UserListItem
+import com.aregyan.compose.domain.User
 
 @Composable
 fun UserScreen(
@@ -34,7 +34,7 @@ fun UserScreen(
 }
 
 @Composable
-fun UserItem(item: UserListItem, onUserClick: (String) -> Unit) {
+fun UserItem(item: User, onUserClick: (String) -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()

@@ -1,6 +1,6 @@
 package com.aregyan.compose.domain
 
-data class UserDetails(
+data class Details(
     val user: String? = "",
     val avatar: String? = "",
     val name: String? = "",

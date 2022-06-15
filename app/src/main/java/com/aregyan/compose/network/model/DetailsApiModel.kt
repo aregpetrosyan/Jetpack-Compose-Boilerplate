@@ -1,12 +1,12 @@
 package com.aregyan.compose.network.model
 
 
-import com.aregyan.compose.database.DatabaseUserDetails
+import com.aregyan.compose.database.DetailsEntity
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class NetworkUserDetails(
+data class DetailsApiModel(
     @Json(name = "avatar_url")
     val avatarUrl: String,
     @Json(name = "bio")
@@ -73,8 +73,8 @@ data class NetworkUserDetails(
     val url: String? = null
 )
 
-fun NetworkUserDetails.asDatabaseModel(): DatabaseUserDetails {
-    return DatabaseUserDetails(
+fun DetailsApiModel.asDatabaseModel(): DetailsEntity {
+    return DetailsEntity(
         user = login,
         avatar = avatarUrl,
         name = name ?: "",

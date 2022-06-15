@@ -2,19 +2,19 @@ package com.aregyan.compose.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.aregyan.compose.domain.UserListItem
+import com.aregyan.compose.domain.User
 
 @Entity
-data class DatabaseUserListItem constructor(
+data class UserEntity constructor(
     @PrimaryKey
     val id: Int,
     val avatar: String,
     val username: String
 )
 
-fun List<DatabaseUserListItem>.asDomainModel(): List<UserListItem> {
+fun List<UserEntity>.asDomainModel(): List<User> {
     return map {
-        UserListItem(
+        User(
             id = it.id,
             avatar = it.avatar,
             username = it.username

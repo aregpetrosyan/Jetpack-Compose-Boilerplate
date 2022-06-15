@@ -2,10 +2,10 @@ package com.aregyan.compose.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.aregyan.compose.domain.UserDetails
+import com.aregyan.compose.domain.Details
 
 @Entity
-data class DatabaseUserDetails constructor(
+data class DetailsEntity constructor(
     @PrimaryKey
     val user: String,
     val avatar: String,
@@ -14,8 +14,8 @@ data class DatabaseUserDetails constructor(
     val location: String
 )
 
-fun DatabaseUserDetails.asDomainModel(): UserDetails {
-    return UserDetails(
+fun DetailsEntity.asDomainModel(): Details {
+    return Details(
         user = user,
         avatar = avatar,
         name = name,

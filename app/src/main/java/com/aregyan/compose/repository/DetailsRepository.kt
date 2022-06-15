@@ -2,7 +2,7 @@ package com.aregyan.compose.repository
 
 import com.aregyan.compose.database.LocalDataSource
 import com.aregyan.compose.database.asDomainModel
-import com.aregyan.compose.domain.UserDetails
+import com.aregyan.compose.domain.Details
 import com.aregyan.compose.network.DetailsRemoteDataSource
 import com.aregyan.compose.network.model.asDatabaseModel
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +15,7 @@ class DetailsRepository @Inject constructor(
     private val localDataSource: LocalDataSource
 ) {
 
-    fun getUserDetails(user: String): Flow<UserDetails> =
+    fun getUserDetails(user: String): Flow<Details> =
         localDataSource.usersDao.getUserDetails(user).map { it.asDomainModel() }
 
     suspend fun refreshUserDetails(user: String) {
