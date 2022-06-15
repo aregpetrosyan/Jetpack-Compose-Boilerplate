@@ -7,8 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.aregyan.compose.ui.detail.DetailScreen
-import com.aregyan.compose.ui.user.UserScreen
+import com.aregyan.compose.ui.details.DetailsScreen
+import com.aregyan.compose.ui.users.UsersScreen
 
 @Composable
 fun ComposeApp() {
@@ -18,7 +18,7 @@ fun ComposeApp() {
         startDestination = Route.USER
     ) {
         composable(Route.USER) { backStackEntry ->
-            UserScreen(
+            UsersScreen(
                 onUserClick = { username ->
                     // In order to discard duplicated navigation events, we check the Lifecycle
                     if (backStackEntry.lifecycle.currentState == Lifecycle.State.RESUMED) {
@@ -35,7 +35,7 @@ fun ComposeApp() {
                 }
             ),
         ) {
-            DetailScreen()
+            DetailsScreen()
         }
     }
 }

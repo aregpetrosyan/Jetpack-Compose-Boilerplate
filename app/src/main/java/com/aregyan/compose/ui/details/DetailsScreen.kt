@@ -1,4 +1,4 @@
-package com.aregyan.compose.ui.detail
+package com.aregyan.compose.ui.details
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -11,8 +11,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 
 @Composable
-fun DetailScreen() {
-    val viewModel = hiltViewModel<DetailViewModel>()
+fun DetailsScreen() {
+    val viewModel = hiltViewModel<DetailsViewModel>()
     val uiState = viewModel.uiState
 
     Row(

@@ -1,4 +1,4 @@
-package com.aregyan.compose.ui.user
+package com.aregyan.compose.ui.users
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,10 +16,10 @@ import coil.compose.AsyncImage
 import com.aregyan.compose.domain.User
 
 @Composable
-fun UserScreen(
+fun UsersScreen(
     onUserClick: (String) -> Unit
 ) {
-    val viewModel = hiltViewModel<UserViewModel>()
+    val viewModel = hiltViewModel<UsersViewModel>()
     val uiState = viewModel.uiState
 
     LazyColumn(

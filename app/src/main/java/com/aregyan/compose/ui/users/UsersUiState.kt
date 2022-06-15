@@ -1,7 +1,7 @@
-package com.aregyan.compose.ui.user
+package com.aregyan.compose.ui.users
 
 import com.aregyan.compose.domain.User
 
-data class UserUiState(
+data class UsersUiState(
     val list: List<User> = listOf()
 )

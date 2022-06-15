@@ -1,4 +1,4 @@
-package com.aregyan.compose.ui.user
+package com.aregyan.compose.ui.users
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -13,11 +13,11 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class UserViewModel @Inject constructor(
+class UsersViewModel @Inject constructor(
     private val usersRepository: UsersRepository
 ) : ViewModel() {
 
-    var uiState by mutableStateOf(UserUiState())
+    var uiState by mutableStateOf(UsersUiState())
         private set
 
     init {

@@ -1,4 +1,4 @@
-package com.aregyan.compose.ui.detail
+package com.aregyan.compose.ui.details
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -15,13 +15,13 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailViewModel @Inject constructor(
+class DetailsViewModel @Inject constructor(
     private val detailsRepository: DetailsRepository,
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
     private val username: String? = savedStateHandle[Argument.USERNAME]
-    var uiState by mutableStateOf(DetailUiState())
+    var uiState by mutableStateOf(DetailsUiState())
         private set
 
     init {
