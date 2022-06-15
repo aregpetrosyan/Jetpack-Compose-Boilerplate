@@ -95,8 +95,7 @@ dependencies {
     implementation "io.coil-kt:coil-compose:2.1.0"
 
     //==================== Navigation ====================
-    def nav_version = "2.4.2"
-    implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation "androidx.navigation:navigation-compose:2.4.2"
 
     //==================== Memory Leak Detection ====================
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
