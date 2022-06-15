@@ -34,7 +34,7 @@ fun DetailScreen() {
             )
             Text(
                 modifier = Modifier.padding(start = 16.dp, top = 16.dp),
-                text = uiState.detail.userSince.orEmpty(),
+                text = uiState.formattedUserSince,
                 color = MaterialTheme.colors.onBackground
             )
             Text(
