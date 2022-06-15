@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.map
 import timber.log.Timber
 import javax.inject.Inject
 
-class UserListRepository @Inject constructor(
+class UsersRepository @Inject constructor(
     private val usersRemoteDataSource: UsersRemoteDataSource,
     private val localDataSource: LocalDataSource
 ) {

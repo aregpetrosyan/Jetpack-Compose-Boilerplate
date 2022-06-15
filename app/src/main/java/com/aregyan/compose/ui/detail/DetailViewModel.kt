@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aregyan.compose.repository.UserDetailsRepository
+import com.aregyan.compose.repository.DetailsRepository
 import com.aregyan.compose.ui.Argument
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    private val userDetailsRepository: UserDetailsRepository,
+    private val detailsRepository: DetailsRepository,
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
@@ -27,8 +27,8 @@ class DetailViewModel @Inject constructor(
     init {
         username?.let {
             viewModelScope.launch(Dispatchers.IO) {
-                userDetailsRepository.refreshUserDetails(it)
-                userDetailsRepository.getUserDetails(it).collect { detail ->
+                detailsRepository.refreshUserDetails(it)
+                detailsRepository.getUserDetails(it).collect { detail ->
                     withContext(Dispatchers.Main) {
                         uiState = uiState.copy(detail = detail)
                     }
