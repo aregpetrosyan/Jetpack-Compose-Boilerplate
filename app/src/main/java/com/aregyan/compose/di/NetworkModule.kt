@@ -1,8 +1,8 @@
 package com.aregyan.compose.di
 
 import com.aregyan.compose.BuildConfig
-import com.aregyan.compose.network.DetailsRemoteDataSource
-import com.aregyan.compose.network.UsersRemoteDataSource
+import com.aregyan.compose.network.DetailsApi
+import com.aregyan.compose.network.UsersApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,12 +41,12 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): UsersRemoteDataSource =
-        retrofit.create(UsersRemoteDataSource::class.java)
+    fun provideApiService(retrofit: Retrofit): UsersApi =
+        retrofit.create(UsersApi::class.java)
 
     @Provides
     @Singleton
-    fun provideUserDetailsService(retrofit: Retrofit): DetailsRemoteDataSource =
-        retrofit.create(DetailsRemoteDataSource::class.java)
+    fun provideUserDetailsService(retrofit: Retrofit): DetailsApi =
+        retrofit.create(DetailsApi::class.java)
 
 }

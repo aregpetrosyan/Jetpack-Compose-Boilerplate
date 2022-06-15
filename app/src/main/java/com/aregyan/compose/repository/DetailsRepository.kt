@@ -3,7 +3,7 @@ package com.aregyan.compose.repository
 import com.aregyan.compose.database.LocalDataSource
 import com.aregyan.compose.database.asDomainModel
 import com.aregyan.compose.domain.Details
-import com.aregyan.compose.network.DetailsRemoteDataSource
+import com.aregyan.compose.network.DetailsApi
 import com.aregyan.compose.network.model.asDatabaseModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -11,7 +11,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class DetailsRepository @Inject constructor(
-    private val detailsRemoteDataSource: DetailsRemoteDataSource,
+    private val detailsApi: DetailsApi,
     private val localDataSource: LocalDataSource
 ) {
 
@@ -20,7 +20,7 @@ class DetailsRepository @Inject constructor(
 
     suspend fun refreshUserDetails(user: String) {
         try {
-            val userDetails = detailsRemoteDataSource.getDetails(user)
+            val userDetails = detailsApi.getDetails(user)
             localDataSource.localDataDao.insertDetails(userDetails.asDatabaseModel())
         } catch (e: Exception) {
             Timber.w(e)
