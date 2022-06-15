@@ -18,7 +18,7 @@ class DetailsRepository @Inject constructor(
     fun getUserDetails(user: String): Flow<Details> =
         localDataSource.localDataDao.getDetails(user).map { it.asDomainModel() }
 
-    suspend fun refreshUserDetails(user: String) {
+    suspend fun refreshDetails(user: String) {
         try {
             val userDetails = detailsApi.getDetails(user)
             localDataSource.localDataDao.insertDetails(userDetails.asDatabaseModel())

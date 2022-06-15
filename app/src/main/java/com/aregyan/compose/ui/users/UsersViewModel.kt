@@ -22,7 +22,7 @@ class UsersViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            usersRepository.refreshUserList()
+            usersRepository.refreshUsers()
             usersRepository.users.collect { list ->
                 withContext(Dispatchers.Main) {
                     uiState = uiState.copy(list = list)

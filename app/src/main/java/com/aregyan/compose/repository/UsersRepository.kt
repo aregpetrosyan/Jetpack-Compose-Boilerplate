@@ -18,7 +18,7 @@ class UsersRepository @Inject constructor(
     val users: Flow<List<User>> =
         localDataSource.localDataDao.getUsers().map { it.asDomainModel() }
 
-    suspend fun refreshUserList() {
+    suspend fun refreshUsers() {
         try {
             val users = usersApi.getUsers()
             localDataSource.localDataDao.insertUsers(users.asDatabaseModel())
