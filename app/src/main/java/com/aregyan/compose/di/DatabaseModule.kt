@@ -2,8 +2,8 @@ package com.aregyan.compose.di
 
 import android.content.Context
 import androidx.room.Room
-import com.aregyan.compose.database.LocalDataDao
-import com.aregyan.compose.database.LocalDataSource
+import com.aregyan.compose.database.UsersDao
+import com.aregyan.compose.database.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,17 +16,17 @@ import javax.inject.Singleton
 object DatabaseModule {
     @Provides
     @Singleton
-    fun provideAppDatabase(@ApplicationContext appContext: Context): LocalDataSource {
+    fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
         return Room.databaseBuilder(
             appContext,
-            LocalDataSource::class.java,
+            AppDatabase::class.java,
             "Users"
         ).fallbackToDestructiveMigration().build()
     }
 
     @Provides
-    fun provideChannelDao(localDataSource: LocalDataSource): LocalDataDao {
-        return localDataSource.localDataDao
+    fun provideChannelDao(appDatabase: AppDatabase): UsersDao {
+        return appDatabase.usersDao
     }
 
 }

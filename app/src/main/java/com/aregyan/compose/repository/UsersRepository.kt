@@ -1,6 +1,6 @@
 package com.aregyan.compose.repository
 
-import com.aregyan.compose.database.LocalDataSource
+import com.aregyan.compose.database.AppDatabase
 import com.aregyan.compose.database.asDomainModel
 import com.aregyan.compose.domain.User
 import com.aregyan.compose.network.UsersApi
@@ -12,16 +12,16 @@ import javax.inject.Inject
 
 class UsersRepository @Inject constructor(
     private val usersApi: UsersApi,
-    private val localDataSource: LocalDataSource
+    private val appDatabase: AppDatabase
 ) {
 
     val users: Flow<List<User>> =
-        localDataSource.localDataDao.getUsers().map { it.asDomainModel() }
+        appDatabase.usersDao.getUsers().map { it.asDomainModel() }
 
     suspend fun refreshUsers() {
         try {
             val users = usersApi.getUsers()
-            localDataSource.localDataDao.insertUsers(users.asDatabaseModel())
+            appDatabase.usersDao.insertUsers(users.asDatabaseModel())
         } catch (e: Exception) {
             Timber.w(e)
         }

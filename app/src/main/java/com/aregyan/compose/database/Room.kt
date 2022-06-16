@@ -4,7 +4,7 @@ import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface LocalDataDao {
+interface UsersDao {
 
     // user List
     @Query("select * from UserEntity")
@@ -22,6 +22,6 @@ interface LocalDataDao {
 }
 
 @Database(entities = [UserEntity::class, DetailsEntity::class], version = 1)
-abstract class LocalDataSource : RoomDatabase() {
-    abstract val localDataDao: LocalDataDao
+abstract class AppDatabase : RoomDatabase() {
+    abstract val usersDao: UsersDao
 }
