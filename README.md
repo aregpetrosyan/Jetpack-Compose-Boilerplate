@@ -3,31 +3,33 @@ This repository contains a sample project in Kotlin to demonstrate Jetpack Compo
 
 ## The app has the following base packages:
 
-- database: Models to work with Room database
+- database: Room database classes
 
-- di: Hilt classes to work with Network and Database
+- di: Hilt classes for Network and Database
 
-- domain: Models which are used by UI
+- domain: Models used by UI
 
-- network: Services and network models
+- network: Api interfaces and models
 
-- repository: Contains all repositories
+- repository: Repositories
 
 - ui: UI components along with ViewModels
 
-## Library reference resources:
+- util: Utility classes
 
-- Hilt: https://developer.android.com/training/dependency-injection/hilt-android
+## Library reference resources:
 
 - MVVM Architecture : https://developer.android.com/jetpack/guide
 
-- Coroutines: https://developer.android.com/kotlin/coroutines
+- Hilt: https://developer.android.com/training/dependency-injection/hilt-android
 
-- Coil: https://coil-kt.github.io/coil/
+- Coroutines: https://developer.android.com/kotlin/coroutines
 
 - Retrofit: https://square.github.io/retrofit/
 
 - Moshi: https://github.com/square/moshi
+
+- Coil: https://coil-kt.github.io/coil/
 
 - Leak Canary: https://square.github.io/leakcanary/
 
