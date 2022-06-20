@@ -15,8 +15,8 @@ class DetailsRepository @Inject constructor(
     private val appDatabase: AppDatabase
 ) {
 
-    fun getUserDetails(user: String): Flow<Details> =
-        appDatabase.usersDao.getDetails(user).map { it.asDomainModel() }
+    fun getUserDetails(user: String): Flow<Details?> =
+        appDatabase.usersDao.getDetails(user).map { it?.asDomainModel() }
 
     suspend fun refreshDetails(user: String) {
         try {

@@ -13,7 +13,7 @@ interface UsersDao {
     fun insertUsers(users: List<UserEntity>)
 
     @Query("select * from DetailsEntity WHERE user LIKE :user")
-    fun getDetails(user: String): Flow<DetailsEntity>
+    fun getDetails(user: String): Flow<DetailsEntity?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDetails(detailsEntity: DetailsEntity)

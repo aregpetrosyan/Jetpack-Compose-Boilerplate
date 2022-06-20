@@ -29,8 +29,10 @@ class DetailsViewModel @Inject constructor(
             viewModelScope.launch(Dispatchers.IO) {
                 detailsRepository.refreshDetails(it)
                 detailsRepository.getUserDetails(it).collect { detail ->
-                    withContext(Dispatchers.Main) {
-                        uiState = uiState.copy(detail = detail)
+                    detail?.let {
+                        withContext(Dispatchers.Main) {
+                            uiState = uiState.copy(detail = detail)
+                        }
                     }
                 }
             }
