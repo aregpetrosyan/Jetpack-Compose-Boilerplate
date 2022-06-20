@@ -30,7 +30,14 @@ class DetailsViewModel @Inject constructor(
                 detailsRepository.refreshDetails(it)
                 detailsRepository.getUserDetails(it).collect { detail ->
                     withContext(Dispatchers.Main) {
-                        uiState = uiState.copy(detail = detail)
+                        uiState = if (detail == null) {
+                            uiState.copy(offline = true)
+                        } else {
+                            uiState.copy(
+                                detail = detail,
+                                offline = false
+                            )
+                        }
                     }
                 }
             }

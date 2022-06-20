@@ -7,13 +7,13 @@ import kotlinx.coroutines.flow.Flow
 interface UsersDao {
 
     @Query("select * from UserEntity")
-    fun getUsers(): Flow<List<UserEntity>>
+    fun getUsers(): Flow<List<UserEntity>?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUsers(users: List<UserEntity>)
 
     @Query("select * from DetailsEntity WHERE user LIKE :user")
-    fun getDetails(user: String): Flow<DetailsEntity>
+    fun getDetails(user: String): Flow<DetailsEntity?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDetails(detailsEntity: DetailsEntity)

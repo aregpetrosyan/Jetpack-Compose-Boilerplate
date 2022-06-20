@@ -15,8 +15,8 @@ class UsersRepository @Inject constructor(
     private val appDatabase: AppDatabase
 ) {
 
-    val users: Flow<List<User>> =
-        appDatabase.usersDao.getUsers().map { it.asDomainModel() }
+    val users: Flow<List<User>?> =
+        appDatabase.usersDao.getUsers().map { it?.asDomainModel() }
 
     suspend fun refreshUsers() {
         try {

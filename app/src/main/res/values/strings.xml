@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Jetpack Compose Boilerplate</string>
+    <string name="please_check_network_connection">Please check your network connection</string>
 </resources>

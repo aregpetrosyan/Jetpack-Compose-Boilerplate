@@ -25,7 +25,14 @@ class UsersViewModel @Inject constructor(
             usersRepository.refreshUsers()
             usersRepository.users.collect { list ->
                 withContext(Dispatchers.Main) {
-                    uiState = uiState.copy(list = list)
+                    uiState = if (list.isNullOrEmpty()) {
+                        uiState.copy(offline = true)
+                    } else {
+                        uiState.copy(
+                            list = list,
+                            offline = false
+                        )
+                    }
                 }
             }
         }

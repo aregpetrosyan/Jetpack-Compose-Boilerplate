@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.aregyan.compose.domain.User
+import com.aregyan.compose.ui.components.NoNetwork
 
 @Composable
 fun UsersScreen(
@@ -22,13 +23,17 @@ fun UsersScreen(
     val viewModel = hiltViewModel<UsersViewModel>()
     val uiState = viewModel.uiState
 
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colors.background)
-    ) {
-        items(uiState.list) { item ->
-            UserItem(item = item, onUserClick = onUserClick)
+    if (uiState.offline) {
+        NoNetwork()
+    } else {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colors.background)
+        ) {
+            items(uiState.list) { item ->
+                UserItem(item = item, onUserClick = onUserClick)
+            }
         }
     }
 }
