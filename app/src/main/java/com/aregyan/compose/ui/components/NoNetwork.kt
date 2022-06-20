@@ -1,5 +1,6 @@
 package com.aregyan.compose.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -17,6 +18,7 @@ fun NoNetwork() {
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colors.background)
             .padding(horizontal = 32.dp),
         contentAlignment = Alignment.Center
     ) {
@@ -31,7 +33,10 @@ fun NoNetwork() {
                 tint = MaterialTheme.colors.primary,
                 contentDescription = null
             )
-            Text(text = stringResource(id = R.string.please_check_network_connection))
+            Text(
+                text = stringResource(id = R.string.please_check_network_connection),
+                color = MaterialTheme.colors.onBackground
+            )
         }
     }
 }
